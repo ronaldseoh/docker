@@ -57,7 +57,7 @@ COPY root /
 
 RUN set -ex \
  && cd /var/www/wallabag \
- && SYMFONY_ENV=prod composer install --no-dev -o --prefer-dist \
+ && SYMFONY_ENV=prod php -d memory_limit=-1 /usr/local/bin/composer install --no-dev -o --prefer-dist \
  && chown -R nobody:nobody /var/www/wallabag
 
 EXPOSE 80
